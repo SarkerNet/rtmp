@@ -1,6 +1,6 @@
 #!/bin/bash
 # install-nginx-rtmp-hls-multiquality.sh
-# Script to install NGINX with RTMP module and configure multi-quality HLS outputs
+# Script to install NGINX with RTMP module and configure multi-quality HLS outputs on port 80
 
 set -e
 
@@ -57,7 +57,7 @@ rtmp {
 
 http {
     server {
-        listen 8080;
+        listen 80;
 
         location / {
             root /usr/local/nginx/html;
@@ -96,4 +96,4 @@ sudo /usr/local/nginx/sbin/nginx
 
 echo "✅ NGINX with RTMP + multi-quality HLS installed and running!"
 echo "Stream ingest: rtmp://your-server/live/streamkey"
-echo "Adaptive HLS playback: http://your-server:8080/hls/streamkey.m3u8"
+echo "Adaptive HLS playback: http://your-server/hls/streamkey.m3u8"
